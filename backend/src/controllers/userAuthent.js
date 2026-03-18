@@ -28,7 +28,11 @@ const register =async (req,res)=>{
             role: user.role
         }
 
-        res.cookie('token',token,{maxAge:60*60*1000})
+        res.cookie('token',token,{
+            maxAge:60*60*1000,
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'})
         
         res.status(201).json({
             user:reply,
@@ -66,7 +70,12 @@ const login = async(req,res)=>{
             _id: user._id,
             role: user.role
         }
-    res.cookie("token",token,{maxAge:60*60*1000})
+    res.cookie("token",token,{
+        maxAge:60*60*1000,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none'
+    })
     res.status(201).json({
             user:reply,
             message:"Loggin Successfully"
