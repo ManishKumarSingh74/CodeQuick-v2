@@ -13,7 +13,7 @@ const cors = require('cors')
 require('dotenv').config({ path: '../.env' });
 
 app.use(cors({
-    origin: 'https://codequick-1.onrender.com',
+    origin: 'https://codequick-v2-rhha.onrender.com',
     credentials: true
 }))
 
