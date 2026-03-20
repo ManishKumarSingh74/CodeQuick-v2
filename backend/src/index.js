@@ -14,6 +14,8 @@ require('dotenv').config({ path: '../.env' });
 
 app.use(cors({
     origin: 'https://codequick-v2-rhha.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }))
 
