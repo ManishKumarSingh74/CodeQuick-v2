@@ -6,7 +6,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       console.log('REGISTER PAYLOAD:', userData);
-      const response = await axiosClient.post('/user/register', userData);
+      const response = await axiosClient.post('/user/register', userData,{withCredentials: true});
       return response.data.user;
     } catch (error) {
       return rejectWithValue({
@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       console.log(credentials)
-      const response = await axiosClient.post('/user/login', credentials);
+      const response = await axiosClient.post('/user/login', credentials,{withCredentials: true});
       console.log(response)
       return response.data.user;
     } catch (error) {
