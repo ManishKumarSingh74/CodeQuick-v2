@@ -50,21 +50,20 @@ function UpdateProblem() {
     control,
     handleSubmit,
     reset,
-    setValue,
     formState: { errors }
   } = useForm({
     resolver: zodResolver(problemSchema),
     defaultValues: {
-        title: '',
-        description: '',
-        difficulty: 'easy',
-        tags:'array',
-        visibleTestCases: [
-            { input: '', output: '', explanation: '' }
-        ],
-        hiddenTestCases:[
-            { input: '', output: '' }
-        ],
+      title: '',
+      description: '',
+      difficulty: 'easy',
+      tags: 'array',
+      visibleTestCases: [
+        { input: '', output: '', explanation: '' }
+      ],
+      hiddenTestCases: [
+        { input: '', output: '' }
+      ],
 
       startCode: [
         { language: 'C++', initialCode: '' },
@@ -98,99 +97,99 @@ function UpdateProblem() {
   });
 
   const normalizeLang = (lang) => {
-  switch (lang.toLowerCase()) {
-    case 'cpp':
-      return 'C++';
-    case 'java':
-      return 'Java';
-    case 'javascript':
-      return 'JavaScript';
-    default:
-      return lang;
-  }
-};
-
-useEffect(() => {
-  const fetchProblem = async () => {
-    try {
-      setLoading(true);
-
-      const { data } = await axiosClient.get(
-        `/problem/problemById/${problemId}`
-      );
-
-      reset({
-        title: data.title || '',
-        description: data.description || '',
-        difficulty: data.difficulty || 'easy',
-        tags: data.tags || '',
-
-        visibleTestCases: data.visibleTestCases?.map(tc => ({
-          input: tc.input || '',
-          output: tc.output || '',
-          explanation: tc.explanation || '',
-        })) || [{ input: '', output: '', explanation: '' }],
-
-        hiddenTestCases: data.hiddenTestCases?.map(tc => ({
-          input: tc.input || '',
-          output: tc.output || '',
-        })) || [{ input: '', output: '' }],
-
-        startCode: data.startCode?.map(sc => ({
-          language: normalizeLang(sc.language),
-          initialCode: sc.initialCode || '',
-        })),
-
-        referenceSolution: data.referenceSolution?.map(rs => ({
-          language: normalizeLang(rs.language),
-          completeCode: rs.completeCode || '',
-        })),
-      });
-      setProblemData(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to fetch problem');
-      setLoading(false);
+    switch (lang.toLowerCase()) {
+      case 'cpp':
+        return 'C++';
+      case 'java':
+        return 'Java';
+      case 'javascript':
+        return 'JavaScript';
+      default:
+        return lang;
     }
   };
 
-  if (problemId) {
-    fetchProblem();
-  }
-}, [problemId, reset]);
+  useEffect(() => {
+    const fetchProblem = async () => {
+      try {
+        setLoading(true);
 
-console.log(problemData);
-console.log(problemId);
+        const { data } = await axiosClient.get(
+          `/problem/problemById/${problemId}`
+        );
 
-//   useEffect(() => {
-//     const fetchProblem = async () => {
-//       try {
-//         const response = await axiosClient.get(`/problem/problemById/${id}`);
-//         const problemData = response.data;
-        
-//         // Reset form with fetched data
-//         reset({
-//           title: problemData.title,
-//           description: problemData.description,
-//           difficulty: problemData.difficulty,
-//           tags: problemData.tags,
-//           visibleTestCases: problemData.visibleTestCases,
-//           hiddenTestCases: problemData.hiddenTestCases,
-//           startCode: problemData.startCode,
-//           referenceSolution: problemData.referenceSolution
-//         });
-        
-//         setLoading(false);
-//       } catch (err) {
-//         setError(err.response?.data?.message || 'Failed to fetch problem');
-//         setLoading(false);
-//       }
-//     };
+        reset({
+          title: data.title || '',
+          description: data.description || '',
+          difficulty: data.difficulty || 'easy',
+          tags: data.tags || '',
 
-//     if (id) {
-//       fetchProblem();
-//     }
-//   }, [id, reset]);
+          visibleTestCases: data.visibleTestCases?.map(tc => ({
+            input: tc.input || '',
+            output: tc.output || '',
+            explanation: tc.explanation || '',
+          })) || [{ input: '', output: '', explanation: '' }],
+
+          hiddenTestCases: data.hiddenTestCases?.map(tc => ({
+            input: tc.input || '',
+            output: tc.output || '',
+          })) || [{ input: '', output: '' }],
+
+          startCode: data.startCode?.map(sc => ({
+            language: normalizeLang(sc.language),
+            initialCode: sc.initialCode || '',
+          })),
+
+          referenceSolution: data.referenceSolution?.map(rs => ({
+            language: normalizeLang(rs.language),
+            completeCode: rs.completeCode || '',
+          })),
+        });
+        setProblemData(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch problem');
+        setLoading(false);
+      }
+    };
+
+    if (problemId) {
+      fetchProblem();
+    }
+  }, [problemId, reset]);
+
+  console.log(problemData);
+  console.log(problemId);
+
+  //   useEffect(() => {
+  //     const fetchProblem = async () => {
+  //       try {
+  //         const response = await axiosClient.get(`/problem/problemById/${id}`);
+  //         const problemData = response.data;
+
+  //         // Reset form with fetched data
+  //         reset({
+  //           title: problemData.title,
+  //           description: problemData.description,
+  //           difficulty: problemData.difficulty,
+  //           tags: problemData.tags,
+  //           visibleTestCases: problemData.visibleTestCases,
+  //           hiddenTestCases: problemData.hiddenTestCases,
+  //           startCode: problemData.startCode,
+  //           referenceSolution: problemData.referenceSolution
+  //         });
+
+  //         setLoading(false);
+  //       } catch (err) {
+  //         setError(err.response?.data?.message || 'Failed to fetch problem');
+  //         setLoading(false);
+  //       }
+  //     };
+
+  //     if (id) {
+  //       fetchProblem();
+  //     }
+  //   }, [id, reset]);
 
 
   const onSubmit = async (data) => {
@@ -215,26 +214,26 @@ console.log(problemId);
     );
   }
 
-//   if (error) {
-//     return (
-//       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
-//         <div className="text-center">
-//           <div className="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center mx-auto mb-4">
-//             <svg className="w-8 h-8 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//             </svg>
-//           </div>
-//           <p className="text-rose-400 text-lg mb-4">{error}</p>
-//           <button
-//             onClick={() => navigate('/adminpanel')}
-//             className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition-all"
-//           >
-//             Back to Admin Panel
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   }
+  //   if (error) {
+  //     return (
+  //       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+  //         <div className="text-center">
+  //           <div className="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center mx-auto mb-4">
+  //             <svg className="w-8 h-8 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  //               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  //             </svg>
+  //           </div>
+  //           <p className="text-rose-400 text-lg mb-4">{error}</p>
+  //           <button
+  //             onClick={() => navigate('/adminpanel')}
+  //             className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition-all"
+  //           >
+  //             Back to Admin Panel
+  //           </button>
+  //         </div>
+  //       </div>
+  //     );
+  //   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
@@ -256,7 +255,7 @@ console.log(problemId);
             </svg>
             Back to Admin Panel
           </button>
-          
+
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -279,7 +278,7 @@ console.log(problemId);
               </svg>
               <h2 className="text-2xl font-bold text-white">Basic Information</h2>
             </div>
-            
+
             <div className="space-y-5">
               <div>
                 <label className="block text-slate-300 text-sm font-medium mb-2">
@@ -287,7 +286,7 @@ console.log(problemId);
                 </label>
                 <input
                   {...register('title')}
-                  
+
                   placeholder="Enter problem title"
                   className={`w-full bg-slate-900/50 border ${errors.title ? 'border-rose-500/50' : 'border-slate-700/50'} rounded-xl px-4 py-3 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all`}
                 />
@@ -362,7 +361,7 @@ console.log(problemId);
               </svg>
               <h2 className="text-2xl font-bold text-white">Test Cases</h2>
             </div>
-            
+
             {/* Visible Test Cases */}
             <div className="mb-8">
               <div className="flex justify-between items-center mb-4">
@@ -378,7 +377,7 @@ console.log(problemId);
                   Add Test Case
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 {visibleFields.map((field, index) => (
                   <div key={field.id} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5">
@@ -395,20 +394,20 @@ console.log(problemId);
                         Remove
                       </button>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <input
                         {...register(`visibleTestCases.${index}.input`)}
                         placeholder="Input"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                       />
-                      
+
                       <input
                         {...register(`visibleTestCases.${index}.output`)}
                         placeholder="Output"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                       />
-                      
+
                       <textarea
                         {...register(`visibleTestCases.${index}.explanation`)}
                         placeholder="Explanation"
@@ -436,7 +435,7 @@ console.log(problemId);
                   Add Test Case
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 {hiddenFields.map((field, index) => (
                   <div key={field.id} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5">
@@ -453,14 +452,14 @@ console.log(problemId);
                         Remove
                       </button>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <input
                         {...register(`hiddenTestCases.${index}.input`)}
                         placeholder="Input"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all"
                       />
-                      
+
                       <input
                         {...register(`hiddenTestCases.${index}.output`)}
                         placeholder="Output"
@@ -481,7 +480,7 @@ console.log(problemId);
               </svg>
               <h2 className="text-2xl font-bold text-white">Code Templates</h2>
             </div>
-            
+
             <div className="space-y-6">
               {[0, 1, 2].map((index) => (
                 <div key={index} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-6">
@@ -492,7 +491,7 @@ console.log(problemId);
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-slate-400 text-sm font-medium mb-2">
@@ -507,7 +506,7 @@ console.log(problemId);
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="block text-slate-400 text-sm font-medium mb-2">
                         Reference Solution
@@ -552,7 +551,7 @@ console.log(problemId);
         </form>
       </div>
 
-      <style jsx>{`
+      <style>{`
         select option {
           background-color: rgb(15 23 42);
           color: rgb(226 232 240);

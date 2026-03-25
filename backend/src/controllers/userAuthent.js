@@ -19,7 +19,10 @@ const register =async (req,res)=>{
         req.body.role = 'user'
         const user = await User.create(req.body)
         
-        const token = jwt.sign({_id:user._id,emailId:emailId,role:'user'},process.env.SECRET_KEY,{expiresIn:60*60})
+        const token = jwt.sign({_id:user._id,emailId:emailId,role:'user'},process.env.SECRET_KEY,{
+            expiresIn:60*60,
+            
+        })
         
         const reply = {
             firstName: user.firstName,
@@ -32,7 +35,12 @@ const register =async (req,res)=>{
             maxAge:60*60*1000,
             httpOnly: true,
             secure: true,
+<<<<<<< Updated upstream
             sameSite: 'none'})
+=======
+            sameSite: 'none'
+        })
+>>>>>>> Stashed changes
         
         res.status(201).json({
             user:reply,
@@ -71,11 +79,19 @@ const login = async(req,res)=>{
             role: user.role
         }
     res.cookie("token",token,{
+<<<<<<< Updated upstream
         maxAge:60*60*1000,
         httpOnly: true,
         secure: true,
         sameSite: 'none'
     })
+=======
+            maxAge:60*60*1000,
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'
+        })
+>>>>>>> Stashed changes
     res.status(201).json({
             user:reply,
             message:"Loggin Successfully"

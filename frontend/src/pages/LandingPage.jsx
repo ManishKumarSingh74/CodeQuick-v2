@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const MouseGlow = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -30,12 +30,6 @@ const LandingPage = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleWaitlistSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thanks for joining! We'll notify ${email} when we launch.`);
-    setEmail('');
-  };
 
   const features = [
     {
@@ -115,9 +109,8 @@ const LandingPage = () => {
   return (
     <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrollY > 50 ? 'bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/50 shadow-xl' : 'bg-transparent'
-      }`}>
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/50 shadow-xl' : 'bg-transparent'
+        }`}>
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 cursor-pointer group">
@@ -132,14 +125,14 @@ const LandingPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <NavLink to="/login">
-              <button className="px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800/50 transition-all hover:scale-105">
-                Login
-              </button>
+                <button className="px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800/50 transition-all hover:scale-105">
+                  Login
+                </button>
               </NavLink>
               <NavLink to="/signup">
-              <button className="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-105">
-                Start Free
-              </button>
+                <button className="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-105">
+                  Start Free
+                </button>
               </NavLink>
             </div>
           </div>
@@ -152,7 +145,7 @@ const LandingPage = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          
+
           <div className="absolute top-20 left-10 w-20 h-20 border border-blue-500/20 rounded-lg animate-float" style={{ animationDelay: '0s' }}></div>
           <div className="absolute top-40 right-20 w-16 h-16 border border-purple-500/20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
           <div className="absolute bottom-40 left-20 w-24 h-24 border border-emerald-500/20 rounded-lg animate-float" style={{ animationDelay: '2s' }}></div>
@@ -179,12 +172,12 @@ const LandingPage = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fadeIn" style={{ animationDelay: '0.4s' }}>
               <NavLink to="/signup">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg hover:from-blue-500 hover:to-blue-600 shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 hover:scale-105 group">
-                Start Coding Free
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </button>
+                <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg hover:from-blue-500 hover:to-blue-600 shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 hover:scale-105 group">
+                  Start Coding Free
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </button>
               </NavLink>
               <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 text-white font-semibold text-lg hover:bg-slate-700/50 transition-all flex items-center justify-center gap-2 hover:scale-105 group">
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,7 +304,7 @@ const LandingPage = () => {
                 <p className="text-xl text-blue-100 mb-8">
                   Join CodeQuick today and master coding with video solutions, multi-language support, and more!
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <button className="px-8 py-4 rounded-xl bg-white text-blue-600 font-bold text-lg hover:bg-slate-100 shadow-2xl transition-all hover:scale-105 flex items-center gap-2 group">
                     Start Coding Now
@@ -356,7 +349,7 @@ const LandingPage = () => {
         </div>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fadeIn {
           from {
             opacity: 0;

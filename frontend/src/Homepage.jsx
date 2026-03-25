@@ -178,6 +178,7 @@ function Homepage() {
       try {
         const { data } = await axiosClient.get('/problem/getAllProblem');
         setProblems(data);
+        console.log("data", data);
       } catch (error) {
         console.error('Error fetching problems:', error);
       }
@@ -485,7 +486,7 @@ function Homepage() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         select option {
           background-color: rgb(15 23 42);
           color: rgb(226 232 240);

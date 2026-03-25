@@ -23,11 +23,11 @@
 //     const fetchProblem = async () => {
 //       setLoading(true);
 //       try {
-        
+
 //         const response = await axiosClient.get(`/problem/problemById/${problemId}`);
-        
+
 //         const initialCode = response.data.startCode.find((sc) => {
-        
+
 //         if (sc.language == "C++" && selectedLanguage == 'cpp')
 //         return true;
 //         else if (sc.language == "Java" && selectedLanguage == 'java')
@@ -41,11 +41,11 @@
 //         console.log(initialCode);
 //         setProblem(response.data);
 //         // console.log(response.data.startCode);
-        
+
 //         console.log(initialCode);
 //         setCode(initialCode);
 //         setLoading(false);
-        
+
 //       } catch (error) {
 //         console.error('Error fetching problem:', error);
 //         setLoading(false);
@@ -76,10 +76,10 @@
 //   };
 
 //   const handleRun = async () => {
-    
+
 //     setLoading(true);
 //     setRunResult(null);
-    
+
 //     try {
 //       const response = await axiosClient.post(`/submission/run/${problemId}`, {
 //         code,
@@ -89,7 +89,7 @@
 //       setRunResult(response.data);
 //       setLoading(false);
 //       setActiveRightTab('testcase');
-      
+
 //     } catch (error) {
 //       console.error('Error running code:', error);
 //       setRunResult({
@@ -102,10 +102,10 @@
 //   };
 
 //   const handleSubmitCode = async () => {
-    
+
 //     setLoading(true);
 //     setSubmitResult(null);
-    
+
 //     try {
 //         const response = await axiosClient.post(`/submission/submit/${problemId}`, {
 //         code:code,
@@ -115,7 +115,7 @@
 //        setSubmitResult(response.data);
 //        setLoading(false);
 //        setActiveRightTab('result');
-      
+
 //     } catch (error) {
 //       console.error('Error submitting code:', error);
 //       setSubmitResult(null);
@@ -378,7 +378,7 @@
 //                         <h4 className="font-bold">✅ All test cases passed!</h4>
 //                         <p className="text-sm mt-2">Runtime: {runResult.runtime+" sec"}</p>
 //                         <p className="text-sm">Memory: {runResult.memory+" KB"}</p>
-                        
+
 //                         <div className="mt-4 space-y-2">
 //                           {runResult.testCases.map((tc, i) => (
 //                             <div key={i} className="bg-base-100 p-3 rounded text-xs">
@@ -484,28 +484,16 @@ const ProblemPage = () => {
   const [activeLeftTab, setActiveLeftTab] = useState('description');
   const [activeRightTab, setActiveRightTab] = useState('code');
   const editorRef = useRef(null);
-  let {problemId}  = useParams();
+  let { problemId } = useParams();
 
-  const { handleSubmit } = useForm();
+
 
   useEffect(() => {
     const fetchProblem = async () => {
       setLoading(true);
       try {
         const response = await axiosClient.get(`/problem/problemById/${problemId}`);
-        
-        const initialCode = response.data.startCode.find((sc) => {
-          if (sc.language == "C++" && selectedLanguage == 'cpp')
-            return true;
-          else if (sc.language == "Java" && selectedLanguage == 'java')
-            return true;
-          else if (sc.language == "Javascript" && selectedLanguage == 'javascript')
-            return true;
-          return false;
-        })?.initialCode || 'Hello';
-
         setProblem(response.data);
-        setCode(initialCode);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching problem:', error);
@@ -516,16 +504,17 @@ const ProblemPage = () => {
     fetchProblem();
   }, [problemId]);
 
-  const langMap = {
-  cpp: "C++",
-  java: "Java",
-  javascript: "JavaScript"
-};
+
 
   useEffect(() => {
+    const langMap = {
+      cpp: "C++",
+      java: "Java",
+      javascript: "JavaScript"
+    };
     if (problem) {
       const expectedLang = langMap[selectedLanguage];
-      const initialCode = problem.startCode.find(sc => sc?.language === expectedLang)?.initialCode || '';
+      const initialCode = problem.startCode?.find(sc => sc?.language === expectedLang)?.initialCode || '';
       setCode(initialCode);
     }
   }, [selectedLanguage, problem]);
@@ -534,32 +523,32 @@ const ProblemPage = () => {
     setCode(value || '');
   };
 
- const handleEditorDidMount = (editor, monaco) => {
-  editorRef.current = editor;
+  const handleEditorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
 
-  monaco.editor.defineTheme("codequick-dark", {
-    base: "vs-dark",
-    inherit: true,
-    rules: [
-      { token: "comment", foreground: "6B7280" },
-      { token: "keyword", foreground: "8B5CF6" },
-      { token: "number", foreground: "38BDF8" },
-      { token: "string", foreground: "34D399" },
-      { token: "function", foreground: "60A5FA" },
-    ],
-    colors: {
-      "editor.background": "#020617", // slate-950
-      "editor.foreground": "#E5E7EB",
-      "editorCursor.foreground": "#8B5CF6",
-      "editorLineNumber.foreground": "#475569",
-      "editorLineNumber.activeForeground": "#60A5FA",
-      "editor.selectionBackground": "#1E293B",
-      "editor.lineHighlightBackground": "#020617",
-    },
-  });
+    monaco.editor.defineTheme("codequick-dark", {
+      base: "vs-dark",
+      inherit: true,
+      rules: [
+        { token: "comment", foreground: "6B7280" },
+        { token: "keyword", foreground: "8B5CF6" },
+        { token: "number", foreground: "38BDF8" },
+        { token: "string", foreground: "34D399" },
+        { token: "function", foreground: "60A5FA" },
+      ],
+      colors: {
+        "editor.background": "#020617", // slate-950
+        "editor.foreground": "#E5E7EB",
+        "editorCursor.foreground": "#8B5CF6",
+        "editorLineNumber.foreground": "#475569",
+        "editorLineNumber.activeForeground": "#60A5FA",
+        "editor.selectionBackground": "#1E293B",
+        "editor.lineHighlightBackground": "#020617",
+      },
+    });
 
-  monaco.editor.setTheme("codequick-dark");
-};
+    monaco.editor.setTheme("codequick-dark");
+  };
 
 
   const handleLanguageChange = (language) => {
@@ -569,7 +558,7 @@ const ProblemPage = () => {
   const handleRun = async () => {
     setLoading(true);
     setRunResult(null);
-    
+
     try {
       const response = await axiosClient.post(`/submission/run/${problemId}`, {
         code,
@@ -593,10 +582,10 @@ const ProblemPage = () => {
   const handleSubmitCode = async () => {
     setLoading(true);
     setSubmitResult(null);
-    
+
     try {
       const response = await axiosClient.post(`/submission/submit/${problemId}`, {
-        code:code,
+        code: code,
         language: selectedLanguage
       });
       setSubmitResult(response.data);
@@ -645,14 +634,13 @@ const ProblemPage = () => {
       <div className="w-1/2 flex flex-col border-r border-slate-800/50 backdrop-blur-xl">
         {/* Left Tabs */}
         <div className="flex items-center gap-1 bg-slate-900/50 px-4 py-3 border-b border-slate-800/50">
-          {['description', 'editorial', 'solutions', 'submissions','chats'].map((tab) => (
+          {['description', 'editorial', 'solutions', 'submissions', 'chats'].map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeLeftTab === tab
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeLeftTab === tab
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                }`}
               onClick={() => setActiveLeftTab(tab)}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -759,7 +747,7 @@ const ProblemPage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <SubmissionHistory problemId={problemId}/>
+                    <SubmissionHistory problemId={problemId} />
                   </div>
                 </div>
               )}
@@ -770,9 +758,9 @@ const ProblemPage = () => {
                     <span className="w-1 h-6 bg-purple-500 rounded-full"></span>
                     Chats
                   </h2>
-                  
-                    <ChatAi problem={problem} />
-                  
+
+                  <ChatAi problem={problem} />
+
                 </div>
               )}
             </>
@@ -787,11 +775,10 @@ const ProblemPage = () => {
           {['code', 'testcase', 'result'].map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeRightTab === tab
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeRightTab === tab
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                }`}
               onClick={() => setActiveRightTab(tab)}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -809,11 +796,10 @@ const ProblemPage = () => {
                   {['javascript', 'java', 'cpp'].map((lang) => (
                     <button
                       key={lang}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                        selectedLanguage === lang
-                          ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
-                          : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-200'
-                      }`}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${selectedLanguage === lang
+                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                        : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-slate-200'
+                        }`}
                       onClick={() => handleLanguageChange(lang)}
                     >
                       {lang === 'cpp' ? 'C++' : lang === 'javascript' ? 'JavaScript' : 'Java'}
@@ -911,7 +897,7 @@ const ProblemPage = () => {
                           <p className="text-emerald-400 font-semibold">{runResult.memory} KB</p>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-3">
                         {runResult.testCases.map((tc, i) => (
                           <div key={i} className="bg-slate-900/50 backdrop-blur-sm p-4 rounded-lg border border-slate-700/50">
@@ -956,8 +942,8 @@ const ProblemPage = () => {
                                 <span className="text-slate-500 min-w-[80px]">Output:</span>
                                 <span className="text-slate-300">{tc.stdout}</span>
                               </div>
-                              <div className={`font-semibold pt-2 ${tc.status_id==3 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                                {tc.status_id==3 ? '✓ Passed' : '✗ Failed'}
+                              <div className={`font-semibold pt-2 ${tc.status_id == 3 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                                {tc.status_id == 3 ? '✓ Passed' : '✗ Failed'}
                               </div>
                             </div>
                           </div>
@@ -986,8 +972,8 @@ const ProblemPage = () => {
                 Submission Result
               </h3>
               {submitResult ? (
-                <div className={`rounded-xl p-6 border ${submitResult.status ==='accepted'? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-rose-500/10 border-rose-500/30'}`}>
-                  {submitResult.status=="accepted" ? (
+                <div className={`rounded-xl p-6 border ${submitResult.status === 'accepted' ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-rose-500/10 border-rose-500/30'}`}>
+                  {submitResult.status == "accepted" ? (
                     <div>
                       <h4 className="font-bold text-2xl text-emerald-400 mb-6 flex items-center gap-3">
                         <span className="text-4xl">🎉</span>
@@ -1036,7 +1022,7 @@ const ProblemPage = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 8px;
           height: 8px;

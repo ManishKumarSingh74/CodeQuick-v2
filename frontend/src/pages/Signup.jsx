@@ -39,7 +39,7 @@
 
 
 //   return (
-    
+
 //      <div className="min-h-screen flex items-center justify-center bg-base-200 p-4">
 //       <div className="card w-full max-w-md bg-base-100 shadow-xl">
 //         {/* Header with Sign In text */}
@@ -98,7 +98,7 @@
 import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod'; 
+import { z } from 'zod';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../authSlice';
@@ -114,11 +114,10 @@ const Signup = () => {
   const navigate = useNavigate()
   const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = React.useState(false);
-  
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(signupSchema),
@@ -128,7 +127,7 @@ const Signup = () => {
     if (isAuthenticated) {
       navigate('/');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   const onSubmit = (data) => {
     dispatch(registerUser(data))
@@ -160,7 +159,7 @@ const Signup = () => {
         <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden">
           <div className="p-8">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Create Account</h2>
-            
+
             {error && (
               <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3">
                 <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,8 +269,8 @@ const Signup = () => {
               </div>
 
               {/* Submit Button */}
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={loading}
                 onClick={handleSubmit(onSubmit)}
                 className="w-full mt-6 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"

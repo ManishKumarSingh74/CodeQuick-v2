@@ -71,17 +71,17 @@
 //                   <div className={`${option.bgColor} p-4 rounded-full mb-4`}>
 //                     <IconComponent size={32} className="text-base-content" />
 //                   </div>
-                  
+
 //                   {/* Title */}
 //                   <h2 className="card-title text-xl mb-2">
 //                     {option.title}
 //                   </h2>
-                  
+
 //                   {/* Description */}
 //                   <p className="text-base-content/70 mb-6">
 //                     {option.description}
 //                   </p>
-                  
+
 //                   {/* Action Button */}
 //                   <div className="card-actions">
 //                     <div className="card-actions">
@@ -113,7 +113,7 @@
 
 // function Admin() {
 //   const [selectedOption, setSelectedOption] = useState(null);
-  
+
 //   const adminOptions = [
 //     {
 //       id: 'create',
@@ -199,24 +199,24 @@
 //               >
 //                 {/* Gradient Overlay */}
 //                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
 //                 <div className="card-body items-center text-center p-8 relative z-10">
 //                   {/* Icon with Animation */}
 //                   <div className={`${option.bgColor} backdrop-blur-md p-6 rounded-2xl mb-6 relative overflow-hidden group-hover:scale-110 transition-transform duration-500 border border-white/20`}>
 //                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
 //                     <IconComponent size={40} className="text-blue-100 relative z-10 group-hover:rotate-12 transition-transform duration-500" />
 //                   </div>
-                  
+
 //                   {/* Title */}
 //                   <h2 className="card-title text-2xl mb-3 group-hover:text-blue-300 transition-colors duration-300 text-blue-50">
 //                     {option.title}
 //                   </h2>
-                  
+
 //                   {/* Description */}
 //                   <p className="text-blue-100/70 mb-6 text-sm leading-relaxed">
 //                     {option.description}
 //                   </p>
-                  
+
 //                   {/* Action Button */}
 //                   <div className="card-actions w-full">
 //                     <NavLink 
@@ -245,13 +245,13 @@
 //               <div className="stat-value text-blue-300">{adminOptions.length}</div>
 //               <div className="stat-desc text-blue-100/60">Available operations</div>
 //             </div>
-            
+
 //             <div className="stat place-items-center">
 //               <div className="stat-title text-blue-200">Platform</div>
 //               <div className="stat-value text-cyan-300">CodeQuick</div>
 //               <div className="stat-desc text-blue-100/60">Admin Dashboard</div>
 //             </div>
-            
+
 //             <div className="stat place-items-center">
 //               <div className="stat-title text-blue-200">Status</div>
 //               <div className="stat-value text-green-300">Active</div>
@@ -264,7 +264,7 @@
 //         </div>
 //       </div>
 
-//       <style jsx>{`
+//       <style>{`
 //         @keyframes slideUp {
 //           from {
 //             opacity: 0;
@@ -303,8 +303,6 @@ import { Plus, Edit, Trash2, Home, RefreshCw, Zap, Video } from 'lucide-react';
 import { NavLink } from 'react-router';
 
 function Admin() {
-  const [selectedOption, setSelectedOption] = useState(null);
-
   const adminOptions = [
     {
       id: 'create',
@@ -378,9 +376,9 @@ function Admin() {
                 CodeQuick
               </span>
             </NavLink>
-            
-            <NavLink 
-              to="/" 
+
+            <NavLink
+              to="/"
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-slate-600/50 transition-all text-slate-200 hover:text-white"
             >
               <Home size={18} />
@@ -414,12 +412,12 @@ function Admin() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10"
-                     style={{
-                       background: `linear-gradient(to right, ${option.color.includes('emerald') ? '#10b981' : 
-                                                                option.color.includes('amber') ? '#f59e0b' : 
-                                                                option.color.includes('rose') ? '#f43f5e' : '#a855f7'}33, transparent)`
-                     }}></div>
-                
+                  style={{
+                    background: `linear-gradient(to right, ${option.color.includes('emerald') ? '#10b981' :
+                      option.color.includes('amber') ? '#f59e0b' :
+                        option.color.includes('rose') ? '#f43f5e' : '#a855f7'}33, transparent)`
+                  }}></div>
+
                 <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden h-full">
                   <div className="p-8 flex flex-col items-center text-center h-full">
                     {/* Icon */}
@@ -445,10 +443,10 @@ function Admin() {
                       className={`w-full px-6 py-3 rounded-xl bg-gradient-to-r ${option.color} text-white font-semibold shadow-lg ${option.shadowColor} ${option.hoverColor} transition-all flex items-center justify-center gap-2 group/btn`}
                     >
                       <span>Get Started</span>
-                      <svg 
-                        className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
+                      <svg
+                        className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

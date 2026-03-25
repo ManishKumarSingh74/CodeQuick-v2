@@ -91,7 +91,7 @@
 //   return (
 //     <div className="container mx-auto p-6">
 //       <h1 className="text-3xl font-bold mb-6">Create New Problem</h1>
-      
+
 //       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 //         {/* Basic Information */}
 //         <div className="card bg-base-100 shadow-lg p-6">
@@ -159,7 +159,7 @@
 //         {/* Test Cases */}
 //         <div className="card bg-base-100 shadow-lg p-6">
 //           <h2 className="text-xl font-semibold mb-4">Test Cases</h2>
-          
+
 //           {/* Visible Test Cases */}
 //           <div className="space-y-4 mb-6">
 //             <div className="flex justify-between items-center">
@@ -172,7 +172,7 @@
 //                 Add Visible Case
 //               </button>
 //             </div>
-            
+
 //             {visibleFields.map((field, index) => (
 //               <div key={field.id} className="border p-4 rounded-lg space-y-2">
 //                 <div className="flex justify-end">
@@ -184,19 +184,19 @@
 //                     Remove
 //                   </button>
 //                 </div>
-                
+
 //                 <input
 //                   {...register(`visibleTestCases.${index}.input`)}
 //                   placeholder="Input"
 //                   className="input input-bordered w-full"
 //                 />
-                
+
 //                 <input
 //                   {...register(`visibleTestCases.${index}.output`)}
 //                   placeholder="Output"
 //                   className="input input-bordered w-full"
 //                 />
-                
+
 //                 <textarea
 //                   {...register(`visibleTestCases.${index}.explanation`)}
 //                   placeholder="Explanation"
@@ -218,7 +218,7 @@
 //                 Add Hidden Case
 //               </button>
 //             </div>
-            
+
 //             {hiddenFields.map((field, index) => (
 //               <div key={field.id} className="border p-4 rounded-lg space-y-2">
 //                 <div className="flex justify-end">
@@ -230,13 +230,13 @@
 //                     Remove
 //                   </button>
 //                 </div>
-                
+
 //                 <input
 //                   {...register(`hiddenTestCases.${index}.input`)}
 //                   placeholder="Input"
 //                   className="input input-bordered w-full"
 //                 />
-                
+
 //                 <input
 //                   {...register(`hiddenTestCases.${index}.output`)}
 //                   placeholder="Output"
@@ -250,14 +250,14 @@
 //         {/* Code Templates */}
 //         <div className="card bg-base-100 shadow-lg p-6">
 //           <h2 className="text-xl font-semibold mb-4">Code Templates</h2>
-          
+
 //           <div className="space-y-6">
 //             {[0, 1, 2].map((index) => (
 //               <div key={index} className="space-y-2">
 //                 <h3 className="font-medium">
 //                   {index === 0 ? 'C++' : index === 1 ? 'Java' : 'JavaScript'}
 //                 </h3>
-                
+
 //                 <div className="form-control">
 //                   <label className="label">
 //                     <span className="label-text">Initial Code</span>
@@ -270,7 +270,7 @@
 //                     />
 //                   </pre>
 //                 </div>
-                
+
 //                 <div className="form-control">
 //                   <label className="label">
 //                     <span className="label-text">Reference Solution</span>
@@ -408,7 +408,7 @@ function AdminPanel() {
             </svg>
             Back to Admin Panel
           </button>
-          
+
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
               <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -431,7 +431,7 @@ function AdminPanel() {
               </svg>
               <h2 className="text-2xl font-bold text-white">Basic Information</h2>
             </div>
-            
+
             <div className="space-y-5">
               <div>
                 <label className="block text-slate-300 text-sm font-medium mb-2">
@@ -440,7 +440,7 @@ function AdminPanel() {
                 <input
                   {...register('title')}
                   placeholder="Enter problem title"
-                  
+
                   className={`w-full bg-slate-900/50 border ${errors.title ? 'border-rose-500/50' : 'border-slate-700/50'} rounded-xl px-4 py-3 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all`}
                 />
                 {errors.title && (
@@ -514,7 +514,7 @@ function AdminPanel() {
               </svg>
               <h2 className="text-2xl font-bold text-white">Test Cases</h2>
             </div>
-            
+
             {/* Visible Test Cases */}
             <div className="mb-8">
               <div className="flex justify-between items-center mb-4">
@@ -530,7 +530,7 @@ function AdminPanel() {
                   Add Test Case
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 {visibleFields.map((field, index) => (
                   <div key={field.id} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5">
@@ -547,20 +547,20 @@ function AdminPanel() {
                         Remove
                       </button>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <input
                         {...register(`visibleTestCases.${index}.input`)}
                         placeholder="Input"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                       />
-                      
+
                       <input
                         {...register(`visibleTestCases.${index}.output`)}
                         placeholder="Output"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                       />
-                      
+
                       <textarea
                         {...register(`visibleTestCases.${index}.explanation`)}
                         placeholder="Explanation"
@@ -588,7 +588,7 @@ function AdminPanel() {
                   Add Test Case
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 {hiddenFields.map((field, index) => (
                   <div key={field.id} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5">
@@ -605,14 +605,14 @@ function AdminPanel() {
                         Remove
                       </button>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <input
                         {...register(`hiddenTestCases.${index}.input`)}
                         placeholder="Input"
                         className="w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all"
                       />
-                      
+
                       <input
                         {...register(`hiddenTestCases.${index}.output`)}
                         placeholder="Output"
@@ -633,7 +633,7 @@ function AdminPanel() {
               </svg>
               <h2 className="text-2xl font-bold text-white">Code Templates</h2>
             </div>
-            
+
             <div className="space-y-6">
               {[0, 1, 2].map((index) => (
                 <div key={index} className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-6">
@@ -644,7 +644,7 @@ function AdminPanel() {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-slate-400 text-sm font-medium mb-2">
@@ -659,7 +659,7 @@ function AdminPanel() {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="block text-slate-400 text-sm font-medium mb-2">
                         Reference Solution
@@ -705,7 +705,7 @@ function AdminPanel() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         select option {
           background-color: rgb(15 23 42);
           color: rgb(226 232 240);
