@@ -160,6 +160,7 @@ import { NavLink } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from './utils/axiosClient';
 import { logoutUser, clearAuth } from './authSlice';
+import CodeQuickLogo from './components/CodeQuickLogo';
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -235,13 +236,9 @@ function Homepage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <NavLink to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                CodeQuick
+              <CodeQuickLogo className="group-hover:scale-110 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]" />
+              <span className="text-2xl font-black font-mono italic tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">
+                CODE<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">QUICK</span>
               </span>
             </NavLink>
 

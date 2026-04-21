@@ -33,7 +33,7 @@ function App() {
         <Route path="/admin/delete" element={isAuthenticated && user?.role == "admin" ? <AdminDelete /> : <Navigate to="/homepage" />} />
         <Route path="/admin/update" element={isAuthenticated && user?.role == "admin" ? <AdminUpdate /> : <Navigate to="/homepage" />} />
         <Route path="/adminupdate/:problemId" element={isAuthenticated && user?.role == "admin" ? <UpdateProblem /> : <Navigate to="/homepage" />} />
-        <Route path="/problem/:problemId" element={<ProblemPage />}></Route>
+        <Route path="/problem/:problemId" element={isAuthenticated ? <ProblemPage /> : <Navigate to="/homepage" />}></Route>
       </Routes>
     </>
   )

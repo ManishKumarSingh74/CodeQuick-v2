@@ -95,6 +95,7 @@ import { z } from 'zod';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from "../authSlice"
+import CodeQuickLogo from '../components/CodeQuickLogo'
 
 const signinSchema = z.object({
   email: z.string().email(),
@@ -137,15 +138,13 @@ const Login = () => {
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 shadow-lg shadow-blue-500/30 mb-4">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
+          <div className="flex justify-center mb-6">
+            <CodeQuickLogo width={72} height={72} className="drop-shadow-[0_0_20px_rgba(52,211,153,0.4)]" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2">
-            Welcome Back
+          <h1 className="text-4xl font-black font-mono italic tracking-tighter text-white mb-2 -ml-2">
+            CODE<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">QUICK</span>
           </h1>
-          <p className="text-slate-400">Sign in to continue coding</p>
+          <p className="text-slate-400">Welcome Back! Sign in to continue coding.</p>
         </div>
 
         {/* Main Card */}
@@ -231,7 +230,7 @@ const Login = () => {
                 type="submit"
                 onClick={handleSubmit(onSubmit)}
                 disabled={loading}
-                className="w-full mt-4 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full mt-4 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold hover:from-emerald-400 hover:to-cyan-400 shadow-lg shadow-emerald-500/30 hover:shadow-cyan-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -254,7 +253,7 @@ const Login = () => {
           <div className="px-8 py-6 bg-slate-900/30 border-t border-slate-700/50">
             <p className="text-center text-slate-400 text-sm">
               Don't have an account?{' '}
-              <a href="/signup" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+              <a href="/signup" className="text-emerald-400 hover:text-cyan-400 font-semibold transition-colors">
                 Sign up
               </a>
             </p>
