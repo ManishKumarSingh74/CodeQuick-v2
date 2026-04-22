@@ -16,18 +16,10 @@ import UpdateProblem from "./components/UpdateProblem"
 function App() {
 
   const dispatch = useDispatch();
-  const { isAuthenticated, user, loading } = useSelector((state) => state.auth)
+  const { isAuthenticated, user } = useSelector((state) => state.auth)
   useEffect(() => {
     dispatch(checkAuth())
   }, [dispatch])
-
-  if (loading) return (
-    <div className="min-h-screen bg-slate-950">
-      <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-      </div>
-    </div>
-  );
 
   return (
     <>

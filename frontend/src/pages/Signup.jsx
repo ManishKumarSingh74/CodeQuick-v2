@@ -103,6 +103,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../authSlice';
 import CodeQuickLogo from '../components/CodeQuickLogo';
+import { Link } from 'react-router-dom';
 
 const signupSchema = z.object({
   firstName: z.string().min(3, "Name should contain at least 3 char"),
@@ -126,7 +127,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/homepage');
     }
   }, [isAuthenticated, navigate]);
 
@@ -295,9 +296,9 @@ const Signup = () => {
           <div className="px-8 py-6 bg-slate-900/30 border-t border-slate-700/50">
             <p className="text-center text-slate-400 text-sm">
               Already have an account?{' '}
-              <a href="/login" className="text-emerald-400 hover:text-cyan-400 font-semibold transition-colors">
+              <Link to="/login" className="text-emerald-400 hover:text-cyan-400 font-semibold transition-colors">
                 Sign in
-              </a>
+              </Link>
             </p>
           </div>
         </div>
