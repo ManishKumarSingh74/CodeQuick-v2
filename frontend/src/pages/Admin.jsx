@@ -369,7 +369,7 @@ function Admin() {
           <div className="flex items-center justify-between">
             <NavLink to="/" className="flex items-center gap-2 group">
               <CodeQuickLogo className="group-hover:scale-110 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]" />
-              <span className="text-2xl font-black font-mono italic tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">
+              <span className="text-2xl font-black font-mono italic tracking-tighter text-white">
                 CODE<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">QUICK</span>
               </span>
             </NavLink>

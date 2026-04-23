@@ -1,0 +1,32 @@
+<svg 
+  width="40" 
+  height="40" 
+  viewBox="0 0 40 40" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Solid Background Square (Browsers drop gradients in favicons) -->
+  <rect width="40" height="40" rx="8" fill="#10B981" />
+  
+  <!-- The 'C' Arc (Code) -->
+  <path 
+    d="M18 8 A12 12 0 0 0 18 32" 
+    stroke="#FFFFFF" 
+    strokeWidth="6" 
+  />
+  
+  <!-- The First Chevron (Quick) -->
+  <path 
+    d="M18 14 L24 20 L18 26" 
+    stroke="#FFFFFF" 
+    strokeWidth="6" 
+  />
+  
+  <!-- The Second Chevron (Quick) -->
+  <path 
+    d="M26 14 L32 20 L26 26" 
+    stroke="#FFFFFF" 
+    strokeWidth="6" 
+    opacity="0.7"
+  />
+</svg>
