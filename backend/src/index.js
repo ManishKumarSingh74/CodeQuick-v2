@@ -13,11 +13,14 @@ const cors = require('cors')
 require('dotenv').config({ path: '../.env' });
 
 app.use(cors({
-    origin: 'https://codequick-v2-rhha.onrender.com',
+    origin: [
+        'https://codequick-v2-rhha.onrender.com',
+        'http://localhost:5173'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-}))
+}));
 
 app.use(express.json())
 app.use(cookieParser());

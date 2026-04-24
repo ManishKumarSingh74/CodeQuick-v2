@@ -106,9 +106,9 @@ import CodeQuickLogo from '../components/CodeQuickLogo';
 import { Link } from 'react-router-dom';
 
 const signupSchema = z.object({
-  firstName: z.string().min(3, "Name should contain at least 3 char"),
-  emailId: z.string().email(),
-  password: z.string().min(8, "password is too weak")
+  firstName: z.string().nonempty("First name is required").min(3, "Name should contain at least 3 char"),
+  emailId: z.string().nonempty("Email is required").email(),
+  password: z.string().nonempty("Password is required").min(8, "password is too weak")
 })
 
 const Signup = () => {
@@ -160,14 +160,14 @@ const Signup = () => {
           <div className="p-8">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Create Account</h2>
 
-            {error && (
+            {/* {error && (
               <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3">
                 <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-rose-400 text-sm">{error}</span>
               </div>
-            )}
+            )} */}
 
             <div onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               {/* First Name Field */}
