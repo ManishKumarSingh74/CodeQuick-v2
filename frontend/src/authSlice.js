@@ -79,6 +79,9 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
     },
+    clearError: (state) => {
+      state.error = null;
+   }
   },
   extraReducers: (builder) => {
     builder
@@ -128,7 +131,7 @@ const authSlice = createSlice({
       })
       .addCase(checkAuth.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload?.message || 'Something went wrong';
+        state.error =null;
         state.isAuthenticated = false;
         state.user = null;
       })
@@ -153,5 +156,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { clearAuth } = authSlice.actions;
+export const { clearAuth,clearError } = authSlice.actions;
 export default authSlice.reducer;

@@ -35,12 +35,7 @@ const register =async (req,res)=>{
             maxAge:60*60*1000,
             httpOnly: true,
             secure: true,
-<<<<<<< Updated upstream
             sameSite: 'none'})
-=======
-            sameSite: 'none'
-        })
->>>>>>> Stashed changes
         
         res.status(201).json({
             user:reply,
@@ -48,7 +43,7 @@ const register =async (req,res)=>{
         })
     }
     catch(err){
-        res.status(400).send("Error : "+err.message)
+        res.status(400).json({message: err.message || "Registration failed"})
     }
 }
 
@@ -64,6 +59,9 @@ const login = async(req,res)=>{
         throw new Error("invalid credentials")
 
     const user = await User.findOne({emailId})
+    if(!user) {
+       throw new Error("Invalid credentials")
+    }
     const match =await bcrypt.compare(password,user.password)
     
 
@@ -79,26 +77,20 @@ const login = async(req,res)=>{
             role: user.role
         }
     res.cookie("token",token,{
-<<<<<<< Updated upstream
         maxAge:60*60*1000,
         httpOnly: true,
         secure: true,
         sameSite: 'none'
     })
-=======
-            maxAge:60*60*1000,
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none'
-        })
->>>>>>> Stashed changes
     res.status(201).json({
             user:reply,
             message:"Loggin Successfully"
         })
     }
     catch(err){
-        res.status(401).send("Error : "+err)
+        
+        // res.status(401).send("Error : "+err)
+        res.status(401).json({message: err.message || "Invalid credentials"})
     }
     
 }
