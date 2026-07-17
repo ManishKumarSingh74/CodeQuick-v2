@@ -1,21 +1,21 @@
 const { createClient } = require('redis');
 
+
 // const redisClient = createClient({
 //     username: 'default',
-//     password: 'Aa0v3iH7ocmf5Ilq8EOTfFYTl1jTh8NX',
+//     password: 'tSj6g9OkCli2tCBh281zOcIi8GEHqr72',
 //     socket: {
-//         host: 'redis-19600.crce206.ap-south-1-1.ec2.cloud.redislabs.com',
-//         port: 19600
+//         host: 'redis-18729.crce179.ap-south-1-1.ec2.cloud.redislabs.com',
+//         port: 18729
 //     }
 // });
 
-
 const redisClient = createClient({
     username: 'default',
-    password: 'tSj6g9OkCli2tCBh281zOcIi8GEHqr72',
+    password: '8xu7BZMNqWZXIVnVGPLQuldqlAItInwL',
     socket: {
-        host: 'redis-18729.crce179.ap-south-1-1.ec2.cloud.redislabs.com',
-        port: 18729
+        host: 'redis-17311.crce276.ap-south-1-3.ec2.cloud.redislabs.com',
+        port: 17311
     }
 });
 
