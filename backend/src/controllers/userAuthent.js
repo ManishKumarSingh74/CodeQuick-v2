@@ -35,7 +35,8 @@ const register =async (req,res)=>{
             maxAge:60*60*1000,
             httpOnly: true,
             secure: true,
-            sameSite: 'none'})
+            sameSite: 'none'
+        })
         
         res.status(201).json({
             user:reply,
