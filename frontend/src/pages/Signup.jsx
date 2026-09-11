@@ -1,100 +1,3 @@
-// import React, { useEffect } from 'react'
-// import { useForm } from "react-hook-form"
-// import { zodResolver } from '@hookform/resolvers/zod';
-// import { z } from 'zod'; 
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import { registerUser } from '../authSlice';
-
-// const signupSchema = z.object({
-//   firstName:z.string().min(3,"Name should contain at least 3 char"),
-//   emailId:z.string().email(),
-//   password:z.string().min(8,"password is too weak")
-// })
-
-// const Signup = () => {
-
-//   const dispatch = useDispatch()
-//   const navigate = useNavigate()
-//   const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
-
-//   const {
-//     register,
-//     handleSubmit,
-//     watch,
-//     formState: { errors },
-//   } = useForm({
-//     resolver: zodResolver(signupSchema),
-//   })
-
-//     useEffect(() => {
-//     if (isAuthenticated) {
-//       navigate('/');
-//     }
-//   }, [isAuthenticated]);
-
-//   const onSubmit = (data)=>{
-//     dispatch(registerUser(data))
-//   }
-
-
-//   return (
-
-//      <div className="min-h-screen flex items-center justify-center bg-base-200 p-4">
-//       <div className="card w-full max-w-md bg-base-100 shadow-xl">
-//         {/* Header with Sign In text */}
-//         <div className="card-body items-center text-center pb-0">
-//           <h2 className="card-title text-2xl font-bold">Sign Up</h2>
-//         </div>
-
-//         {/* Your existing form */}
-//         <form onSubmit={handleSubmit(onSubmit)} className="p-8 pt-4">
-//           <div className="form-control">
-//             <input
-//               {...register("firstName", { required: "First name is required" })}
-//               placeholder="First Name"
-//               className="input input-bordered w-full"
-//             />
-//             {errors.firstName && (
-//               <span className="text-error text-sm mt-1">{errors.firstName?.message}</span>
-//             )}
-//           </div>
-
-//           <div className="form-control mt-4">
-//             <input
-//               {...register("emailId", { required: "Email is required" })}
-//               placeholder="Email"
-//               className="input input-bordered w-full"
-//             />
-//             {errors.emailId && (
-//               <span className="text-error text-sm mt-1">{errors.emailId?.message}</span>
-//             )}
-//           </div>
-
-//           <div className="form-control mt-4">
-//             <input
-//               {...register("password", { required: "Password is required" })}
-//               type="password"
-//               placeholder="Password"
-//               className="input input-bordered w-full"
-//             />
-//             {errors.password && (
-//               <span className="text-error text-sm mt-1">{errors.password?.message}</span>
-//             )}
-//           </div>
-
-//           <button type="submit" className="btn btn-primary mt-6 w-full">
-//             Submit
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Signup
-
-
 import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -140,59 +43,59 @@ const Signup = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-white p-4">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/[0.06] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-200/40 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand Section */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-6">
-            <CodeQuickLogo width={72} height={72} className="drop-shadow-[0_0_20px_rgba(52,211,153,0.4)]" />
+            <CodeQuickLogo width={72} height={72} />
           </div>
-          <h1 className="text-4xl font-black font-mono italic tracking-tighter text-white mb-2 -ml-2">
-            JOIN CODE<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">QUICK</span>
+          <h1 className="text-4xl font-black font-mono italic tracking-tighter text-slate-900 mb-2 -ml-2">
+            JOIN CODE<span className="text-emerald-600">QUICK</span>
           </h1>
-          <p className="text-slate-400">Start your coding journey today.</p>
+          <p className="text-slate-500">Start your coding journey today.</p>
         </div>
 
         {/* Main Card */}
-        <div className="bg-slate-800/30 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
           <div className="p-8">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Create Account</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Create Account</h2>
 
             {error && (
-              <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3">
-                <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
+                <svg className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-rose-400 text-sm">{error}</span>
+                <span className="text-rose-600 text-sm">{error}</span>
               </div>
             )}
 
             <div onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               {/* First Name Field */}
               <div>
-                <label className="block text-slate-300 text-sm font-medium mb-2">
+                <label className="block text-slate-700 text-sm font-medium mb-2">
                   First Name
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
                   <input
                     {...register("firstName")}
                     placeholder="Enter your first name"
-                    className={`w-full bg-slate-900/50 border ${errors.firstName ? 'border-rose-500/50' : 'border-slate-700/50'} rounded-xl px-4 py-3 pl-12 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all`}
+                    className={`w-full bg-slate-50 border ${errors.firstName ? 'border-rose-300' : 'border-slate-200'} rounded-xl px-4 py-3 pl-12 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all`}
                   />
                 </div>
                 {errors.firstName && (
-                  <p className="text-rose-400 text-sm mt-2 flex items-center gap-1">
+                  <p className="text-rose-500 text-sm mt-2 flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -203,23 +106,23 @@ const Signup = () => {
 
               {/* Email Field */}
               <div>
-                <label className="block text-slate-300 text-sm font-medium mb-2">
+                <label className="block text-slate-700 text-sm font-medium mb-2">
                   Email Address
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <input
                     {...register("emailId")}
                     placeholder="Enter your email"
-                    className={`w-full bg-slate-900/50 border ${errors.emailId ? 'border-rose-500/50' : 'border-slate-700/50'} rounded-xl px-4 py-3 pl-12 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all`}
+                    className={`w-full bg-slate-50 border ${errors.emailId ? 'border-rose-300' : 'border-slate-200'} rounded-xl px-4 py-3 pl-12 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all`}
                   />
                 </div>
                 {errors.emailId && (
-                  <p className="text-rose-400 text-sm mt-2 flex items-center gap-1">
+                  <p className="text-rose-500 text-sm mt-2 flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -230,12 +133,12 @@ const Signup = () => {
 
               {/* Password Field */}
               <div>
-                <label className="block text-slate-300 text-sm font-medium mb-2">
+                <label className="block text-slate-700 text-sm font-medium mb-2">
                   Password
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                   </div>
@@ -243,12 +146,12 @@ const Signup = () => {
                     {...register("password")}
                     type={showPassword ? "text" : "password"}
                     placeholder="Create a strong password"
-                    className={`w-full bg-slate-900/50 border ${errors.password ? 'border-rose-500/50' : 'border-slate-700/50'} rounded-xl px-4 py-3 pl-12 pr-12 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all`}
+                    className={`w-full bg-slate-50 border ${errors.password ? 'border-rose-300' : 'border-slate-200'} rounded-xl px-4 py-3 pl-12 pr-12 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 transition-all`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-slate-300 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
                   >
                     {showPassword ? (
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,7 +166,7 @@ const Signup = () => {
                   </button>
                 </div>
                 {errors.password && (
-                  <p className="text-rose-400 text-sm mt-2 flex items-center gap-1">
+                  <p className="text-rose-500 text-sm mt-2 flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -277,7 +180,7 @@ const Signup = () => {
                 type="submit"
                 disabled={loading}
                 onClick={handleSubmit(onSubmit)}
-                className="w-full mt-6 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold hover:from-emerald-400 hover:to-cyan-400 shadow-lg shadow-emerald-500/30 hover:shadow-cyan-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full mt-6 px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-500 shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -297,10 +200,10 @@ const Signup = () => {
           </div>
 
           {/* Footer */}
-          <div className="px-8 py-6 bg-slate-900/30 border-t border-slate-700/50">
-            <p className="text-center text-slate-400 text-sm">
+          <div className="px-8 py-6 bg-slate-50 border-t border-slate-200">
+            <p className="text-center text-slate-500 text-sm">
               Already have an account?{' '}
-              <Link to="/login" className="text-emerald-400 hover:text-cyan-400 font-semibold transition-colors">
+              <Link to="/login" className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
                 Sign in
               </Link>
             </p>
@@ -308,11 +211,11 @@ const Signup = () => {
         </div>
 
         {/* Additional Info */}
-        <p className="text-center text-slate-500 text-sm mt-6">
+        <p className="text-center text-slate-400 text-sm mt-6">
           By signing up, you agree to our{' '}
-          <a href="#" className="text-slate-400 hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="#" className="text-slate-500 hover:text-slate-700 transition-colors">Terms of Service</a>
           {' '}and{' '}
-          <a href="#" className="text-slate-400 hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="#" className="text-slate-500 hover:text-slate-700 transition-colors">Privacy Policy</a>
         </p>
       </div>
     </div>
@@ -320,4 +223,3 @@ const Signup = () => {
 }
 
 export default Signup
-
